@@ -30,7 +30,7 @@ public class TMO {
     }
     
     public void updateFullList() {
-        Movie[] movies = this.DB.getComleteMovieArray();
+        Movie[] movies = this.DB.getCompleteMovieArray();
         update(movies);
     }
     

@@ -7,11 +7,17 @@ package atividade2;
 import atividade2.frontend.MainView;
 
 /**
- * Sistema para CRUD de filmes do aplicativo Cenaflix
+ * CRUD system built for the Cenaflix application.
  * 
  * @author ma_fe
  */
 public class Main {
+    
+    /**
+     * Runs the main screen of the app.
+     * 
+     * @param args
+     */
     public static void main(String[] args) {
         new MainView().setVisible(true);
     }
