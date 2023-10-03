@@ -160,7 +160,10 @@ public class AddFormView extends javax.swing.JFrame {
         String categ = categoryTF.getText();
         String date = dateTF.getText();
         
-        if (ErrorHandling.FormHasEmptyFields(name, categ, date)) return;
+        if (ErrorHandling.FormHasEmptyFields(
+                "Preencha todos os campos para adicionar um novo filme.",
+                new String[]{name, categ, date})
+        ) return;
         
         m.setName(name);
         m.setCategory(categ);

@@ -165,7 +165,10 @@ public class EditFormView extends javax.swing.JFrame {
         String categ = categoryTF.getText();
         String date = dateTF.getText();
         
-        if (ErrorHandling.FormHasEmptyFields(name, categ, date)) return;
+        if (ErrorHandling.FormHasEmptyFields(
+            "Os campos não podem estar vazios ao editar um filme.",
+            new String[]{name, categ, date})
+        ) return;
         
         movie.setName(name);
         movie.setCategory(categ);

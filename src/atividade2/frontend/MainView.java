@@ -211,7 +211,10 @@ public class MainView extends javax.swing.JFrame {
      */
     private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         String term = searchTF.getText();
-        if (ErrorHandling.FormHasEmptyFields(term)) return;
+        if (ErrorHandling.FormHasEmptyFields(
+            "O campo de busca esta vazio, tente novamente com o termo que deseja procurar",
+            new String[]{term})
+        ) return;
         tblManeger.updateFilteredList(term);
         searchTF.setText("");
     }//GEN-LAST:event_searchBtnActionPerformed
