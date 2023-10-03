@@ -40,9 +40,11 @@ public class DAO {
             Class.forName("com.mysql.cj.jdbc.Driver");
             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/cenaflix", "root", ""); // ALTERAR LOGIN E SENHA
         } catch (SQLException e) {
-            System.out.println("Erro ao conectar ao BD");
+            JOptionPane.showMessageDialog(null,"Erro ao conectar ao BD, verifique os dados de conexão.\nO sistema será encerrado ao confirmar.");
+            System.exit(404);
         } catch (ClassNotFoundException ex) {
-            System.out.println("Driver não encontrado");
+            JOptionPane.showMessageDialog(null,"Driver de conexão não encontrado, verifique o driver e tente novamente.\nO sistema será encerrado ao confirmar.");
+            System.exit(404);
         }
     }
 
@@ -65,7 +67,9 @@ public class DAO {
             JOptionPane.showMessageDialog(null, "Erro ao adicionar o filme");
         } finally {
             try {
-                pstt.close();
+                if(pstt != null){
+                    pstt.close();
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -102,7 +106,9 @@ public class DAO {
             JOptionPane.showMessageDialog(null, "Erro ao pegar filme em bd ");
         } finally {
             try {
-                pstt.close();
+                if(pstt != null){
+                    pstt.close();
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -133,7 +139,9 @@ public class DAO {
             JOptionPane.showMessageDialog(null, "Erro ao alterar o filme.\nVerifique os dados e tente novamente.");
         } finally {
             try {
-                pstt.close();
+                if(pstt != null){
+                    pstt.close();
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -157,7 +165,9 @@ public class DAO {
             JOptionPane.showMessageDialog(null, "Erro ao excluir o filme");
         } finally {
             try {
-                pstt.close();
+                if(pstt != null){
+                    pstt.close();
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -195,7 +205,9 @@ public class DAO {
             JOptionPane.showMessageDialog(null, "Erro ao localizar os dados dos filmes.");
         } finally {
             try {
-                stt.close();
+                if(pstt != null){
+                    pstt.close();
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -236,7 +248,9 @@ public class DAO {
             JOptionPane.showMessageDialog(null, "Erro ao filtrar os filmes.\nVerifique o termo de pesquisa e tente novamente");
         } finally {
             try {
-                pstt.close();
+                if(pstt != null){
+                    pstt.close();
+                }
             } catch (SQLException ex) {
                 Logger.getLogger(DAO.class.getName()).log(Level.SEVERE, null, ex);
             }
