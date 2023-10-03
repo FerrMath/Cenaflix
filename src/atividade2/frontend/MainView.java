@@ -11,7 +11,8 @@ import atividade2.backend.infra.table.TMO;
 import javax.swing.JOptionPane;
 
 /**
- * Constructor of the main screen of the system
+ * Main screen of the system.
+ * Where user can see the list of movies, search, delete and edit a selected movie.
  * 
  * @author ma_fe
  */

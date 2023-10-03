@@ -10,7 +10,8 @@ import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
- * Table Manegement object
+ * Table Manegement object.
+ * Will handle the updates for the table of the MainView
  *
  * @author ma_fe
  */
@@ -24,16 +25,29 @@ public class TMO {
         this.TABLE = table;
     }
     
+    /**
+     * Calls update to display the filtered movies on the table
+     * 
+     * @param kw The keyword used to filter the results
+     */
     public void updateFilteredList(String kw) {        
         Movie[] movies = this.DB.getFilteredMovieArray(kw);
         update(movies);
     }
     
+    /**
+     * Calls update to display all the movies available on the table
+     */
     public void updateFullList() {
         Movie[] movies = this.DB.getCompleteMovieArray();
         update(movies);
     }
     
+    /**
+     * Display the the received array of movies on the table
+     * 
+     * @param movies The array of movies to be displayed
+     */
     private void update(Movie[] movies) {
         String[] data;
         DefaultTableModel model = (DefaultTableModel) TABLE.getModel();

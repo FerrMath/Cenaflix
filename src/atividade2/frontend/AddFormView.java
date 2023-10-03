@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
- */
 package atividade2.frontend;
 
 import atividade2.backend.classes.Movie;
@@ -11,13 +7,14 @@ import atividade2.backend.infra.table.TMO;
 import javax.swing.JOptionPane;
 
 public class AddFormView extends javax.swing.JFrame {
-    private DAO db;
-    private TMO tmo;
+
+    private final DAO DB;
+    private final TMO TMO;
 
     public AddFormView(DAO d, TMO t) {
         initComponents();
-        this.db = d;
-        this.tmo = t;
+        this.DB = d;
+        this.TMO = t;
     }
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -145,7 +142,7 @@ public class AddFormView extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void clearPlaceholder(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_clearPlaceholder
-        if (dateTF.getText().equals("__ /__  /____")){
+        if (dateTF.getText().equals("__ /__  /____")) {
             dateTF.setText("");
         }
     }//GEN-LAST:event_clearPlaceholder
@@ -155,36 +152,38 @@ public class AddFormView extends javax.swing.JFrame {
     }//GEN-LAST:event_clearBtnActionPerformed
 
     private void CadastrarBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CadastrarBtnActionPerformed
-        Movie m = new Movie();
-        String name = nameTF.getText();
-        String categ = categoryTF.getText();
-        String date = dateTF.getText();
-        
-        if (ErrorHandling.FormHasEmptyFields(
-                "Preencha todos os campos para adicionar um novo filme.",
-                new String[]{name, categ, date})
-        ) return;
-        
-        m.setName(name);
-        m.setCategory(categ);
-        m.setReleaseDate(date);
-        
-        if (db.addMovie(m)){
-            JOptionPane.showMessageDialog(this, "Filme adicionado com sucesso!");
-        } else {
-            JOptionPane.showMessageDialog(this, "Erro ao adicionar o filme, verifique os dados e tente novamente");
-        }
-        tmo.updateFullList();
-        dispose();
+        addMovie();
     }//GEN-LAST:event_CadastrarBtnActionPerformed
 
-    
-    private void clearForm(){
+    private void clearForm() {
         nameTF.setText("");
         categoryTF.setText("");
         dateTF.setText("__ /__  /____");
     }
-    
+
+    private void addMovie() {
+        Movie m;
+        String name = nameTF.getText();
+        String categ = categoryTF.getText();
+        String date = dateTF.getText();
+
+        if (ErrorHandling.FormHasEmptyFields(
+                "Preencha todos os campos para adicionar um novo filme.",
+                new String[]{name, categ, date})) {
+            return;
+        }
+
+        m = new Movie(name, date, categ);
+
+        if (DB.addMovie(m)) {
+            JOptionPane.showMessageDialog(this, "Filme adicionado com sucesso!");
+        } else {
+            JOptionPane.showMessageDialog(this, "Erro ao adicionar o filme, verifique os dados e tente novamente");
+        }
+        TMO.updateFullList();
+        dispose();
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton CadastrarBtn;
     private javax.swing.JTextField categoryTF;

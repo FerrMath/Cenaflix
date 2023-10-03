@@ -26,10 +26,10 @@ public class Movie {
 
     /**
      *
-     * @param id The id of the Movie
-     * @param name The name of the Movie
-     * @param releaseDate The release date of the Movie
-     * @param category The category of the movie
+     * @param id The id of the Movie.
+     * @param name The name/title of the Movie.
+     * @param releaseDate The release date of the Movie.
+     * @param category The category of the movie.
      */
     public Movie(int id, String name, LocalDate releaseDate, String category) {
         this.id = id;
@@ -52,7 +52,8 @@ public class Movie {
     }
     
     /**
-     *
+     * Makes an array using the movie atributes.
+     * 
      * @return String[id, name, date(dd/MM/yyyy), category]
      */
     public String[] toArray(){
@@ -64,26 +65,43 @@ public class Movie {
             this.category};
     }
     
-
+    /**
+     *
+     * @return The Movie id.
+     */
     public int getId() {
         return id;
     }
 
+    /**
+     * The id setter
+     * 
+     * @param id new int Id
+     */
     public void setId(int id) {
         this.id = id;
     }
 
+    /**
+     *
+     * @return The Movie title/name
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * The name/title setter
+     * 
+     * @param name new string name/title
+     */
     public void setName(String name) {
         this.name = name;
     }
 
     /**
      *
-     * @return LocalDate -> Movie.releaseDate
+     * @return The Movie release date
      */
     public LocalDate getReleaseDate() {
         return releaseDate;
@@ -98,6 +116,11 @@ public class Movie {
         return format.format(releaseDate);
     }
 
+    /**
+     * The release date setter
+     * 
+     * @param releaseDate
+     */
     public void setReleaseDate(LocalDate releaseDate) {
         this.releaseDate = releaseDate;
     }
@@ -105,7 +128,7 @@ public class Movie {
     /**
      * Sets the releaseDate with a new LocalDate based of a formated date String
      * 
-     * @param releaseDate The string formated date (dd/MM/yyyy)
+     * @param releaseDate The string formated date (dd/MM/yyyy).
      */
     public void setReleaseDate(String releaseDate) {
         try {
@@ -118,10 +141,19 @@ public class Movie {
         }
     }
 
+    /**
+     *
+     * @return The movie category
+     */
     public String getCategory() {
         return category;
     }
 
+    /**
+     * The category setter
+     * 
+     * @param category new category string.
+     */
     public void setCategory(String category) {
         this.category = category;
     }
